@@ -11,6 +11,9 @@ def Map(request):
   template = loader.get_template('Map.html')
   return HttpResponse(template.render())
 
+def Learn(request):
+  template = loader.get_template('Learn.html')
+  return HttpResponse(template.render())
 
 def TravelOrders(request):
   template = loader.get_template('TravelOrders.html')

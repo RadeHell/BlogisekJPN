@@ -1,0 +1,123 @@
+{% extends "Main.html" %}
+
+{% block content %}
+
+
+
+<section class="welcome-section content2">
+    <div class="container ">
+        <h1 class="display-4">Basic japanese</h1>
+        
+    </div>
+
+
+    <div class="container mt-5">
+        <!-- Vocabulary List Section -->
+        <h2 class="mb-4">Vocabulary List</h2>
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        
+                        <h6 class="card-title"> <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h6 class="card-title">Word 1</h6>
+                                        <p class="card-text">Definition of Word 1.</p>
+                                    </div>
+                                </div>
+                            </div></h6>
+                        <p class="card-text">Definition of Word 1.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Word 2</h5>
+                        <p class="card-text">Definition of Word 2.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Word 2</h5>
+                        <p class="card-text">Definition of Word 2.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Word 2</h5>
+                        <p class="card-text">Definition of Word 2.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Word 2</h5>
+                        <p class="card-text">Definition of Word 2.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Word 2</h5>
+                        <p class="card-text">Definition of Word 2.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Word 2</h5>
+                        <p class="card-text">Definition of Word 2.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Word 2</h5>
+                        <p class="card-text">Definition of Word 2.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add more words here -->
+
+
+            
+        </div>
+    
+        <!-- Flashcards Section -->
+        <h2 class="mb-4">Flashcards</h2>
+        <div class="card mb-3">
+            <div class="card-body text-center">
+                <h5 class="card-title">Flashcard Word</h5>
+                <button class="btn btn-primary mt-2" onclick="showDefinition()">Show Definition</button>
+                <p id="flashcard-definition" class="card-text mt-3" style="display: none;">Definition of the flashcard word.</p>
+            </div>
+        </div>
+    
+        <!-- Quiz Section -->
+        <h2 class="mb-4">Vocabulary Quiz</h2>
+        <form>
+            <div class="form-group">
+                <label for="quizQuestion1">What is the definition of Word 1?</label>
+                <input type="text" class="form-control" id="quizQuestion1" placeholder="Type your answer here">
+            </div>
+            <button type="submit" class="btn btn-success">Submit Answers</button>
+        </form>
+    </div>
+
+
+
+</section>
+
+{% endblock %}
