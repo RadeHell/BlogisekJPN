@@ -12,9 +12,9 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">
-                        <a href="{% url 'CityTemp' %}">Tokyo City Name from DB</a>
+                        <a href="{% url 'CityTemp' %}">{{ cities.name }}</a>
                     </h5>
-                    <p class="card-text">ExampleDefinition ofCity from DB.</p>
+                    <p class="card-text">{{cities.description }} </p>
                 </div>
             </div>
         </div>
