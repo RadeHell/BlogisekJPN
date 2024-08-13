@@ -7,8 +7,12 @@ def Main(request):
   return HttpResponse(template.render())
 
 
-def Map(request):
-  template = loader.get_template('Map.html')
+def Cities(request):
+  template = loader.get_template('Cities.html')
+  return HttpResponse(template.render())
+
+def CityTemp(request):
+  template = loader.get_template('CityTemp.html')
   return HttpResponse(template.render())
 
 def Learn(request):

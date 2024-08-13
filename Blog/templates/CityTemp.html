@@ -1,0 +1,29 @@
+{% extends "MainCity.html" %}
+
+{% block content %}
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <div class="card big-city-card">
+                <img src="https://media.cntraveler.com/photos/63482b255e7943ad4006df0b/16:9/w_2560%2Cc_limit/tokyoGettyImages-1031467664.jpeg" alt="Tokyo">
+                <div class="card-body">
+                    <h2 class="card-title">Tokyo</h2>
+                    <p class="card-text">Explore the bustling capital city, known for its skyscrapers, shopping, and vibrant culture.</p>
+                    <a href="https://en.wikipedia.org/wiki/Tokyo_City" class="btn btn-primary">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container my-5">
+<a href="{% url 'Cities' %}" class="btn btn-primary"><<<<</a>
+{#   <a href="https://en.wikipedia.org/wiki/Tokyo_City" >#}
+
+</div>
+
+
+
+
+{% endblock %}
