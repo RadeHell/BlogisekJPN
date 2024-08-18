@@ -2,89 +2,24 @@
 
 {% block content %}
 
-
-
 <div class="container mt-5">
-    <!-- Vocabulary List Section -->
-    <h2 class="mb-4"> List of Cities</h2>
+    <h2 class="mb-4">List of Cities</h2>
     <div class="row">
+        <!-- Loop through each city in the cities context variable -->
+        {% for city in cities %}
         <div class="col-md-6 mb-3">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">
-                        <a href="{% url 'CityTemp' %}">{{ cities.name }}</a>
+                        <a href="{% url 'CityTemp' city.id %}">{{ city.name }}</a> <!-- Use the city ID to generate a dynamic URL -->
                     </h5>
-                    <p class="card-text">{{cities.description }} </p>
+                    <p class="card-text">{{ city.description }}</p> <!-- Display city description -->
                 </div>
             </div>
         </div>
-        <div class="col-md-6 mb-3">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">
-                        <a href="{% url 'CityTemp' %}">City Name from DB</a>
-                    </h5>
-                    <p class="card-text">Definition of City from DB.</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6 mb-3">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">
-                     <a href="{% url 'CityTemp' %}">City Name from DB</a></a></h5>
-                    <p class="card-text">Definition of City from DB.</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6 mb-3">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">
-                        <a href="{% url 'CityTemp' %}">City Name from DB</a></h5>
-                    <p class="card-text">Definition of City from DB.</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6 mb-3">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">
-                        <a href="{% url 'CityTemp' %}">City Name from DB</a></h5>
-                    <p class="card-text">Definition of City from DB.</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6 mb-3">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">
-                        <a href="{% url 'CityTemp' %}">
- 				<a href="{% url 'CityTemp' %}">City Name from DB</a></a></a></h5>
-                    <p class="card-text">Definition of City from DB.</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6 mb-3">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">
- 			        <a href="{% url 'CityTemp' %}">City Name from DB</a></h5>
-                    <p class="card-text">Definition of City from DB.</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6 mb-3">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">
- 				<a href="{% url 'CityTemp' %}">City Name from DB</a></h5>
-                    <p class="card-text">Definition of City from DB.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Add more Cities here -->
+        {% endfor %}
+    </div>
+</div>
 
 
 

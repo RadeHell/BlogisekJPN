@@ -1,5 +1,5 @@
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
    
 
         <a class="navbar-brand" href="{% url 'Main' %}">Main</a>
@@ -12,9 +12,12 @@
          
           
                <li class="nav-item active">
-                <a class="nav-link" href="{% url 'Cities' %}">Cities <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="{% url 'cities_list' %}">Cities </a> <!--  <span class="sr-only">(current)</span>-->
               </li>
 
+            
+
+              
               {% comment "" %}
               <li class="nav-item">
              <a class="nav-link" href="{% url 'Home' %}">HomePage</a>
@@ -31,11 +34,12 @@
                 <a class="nav-link" href="{% url 'TravelOrders' %}">Travel itinerary</a>
               </li>
            
-
-           
-           
+          
            </ul>
-           <form class="d-flex">
+
+
+
+           <form class="col float-end">
 
             <a class="btn btn-primary btn-md me-md-2 m-1" href="{% url 'Login' %}">Login</a>
         

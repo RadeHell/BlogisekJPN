@@ -4,15 +4,29 @@ from django.template import loader
 from django.shortcuts import render
 from .models import Cities
 
+def cities_list(request):
+    cities = Cities.objects.all()  # Fetch all cities from the database
+    return render(request, 'Cities.html', {'cities': cities})
+
+def city_detail(request, id):
+    city = get_object_or_404(Cities, id=id)
+    return render(request, 'CityDetail.html', {'city': city})
+
+
+#def CitiesPage(request):
+#    cities = Cities.objects.filter(id=1)  # Fetch all cities from the database
+#    return render(request, 'Cities.html', {'cities': cities})
+
 def CityTemp(request):
     cities = Cities.objects.first()
     return render(request, 'CityTemp.html', {'cities': cities})
 
 
 
-def CitiesPage(request):
-  cities = Cities.objects.first()
-  return render(request, 'Cities.html', {'cities': cities})
+#def CitiesPage(request):
+#  cities = Cities.objects.first()
+#  return render(request, 'Cities.html', {'cities': cities})
+
 
 
 
