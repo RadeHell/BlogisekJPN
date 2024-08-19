@@ -2,28 +2,24 @@
 
 {% block content %}
 
-<div class="container my-5">
-    <div class="row justify-content-center">
-        <div class="col-12">
-            <div class="card big-city-card">
-                <img src="{{ cities.image_url }}" alt="{{ cities.name }}">
-               {% comment "" %} <img src="https://media.cntraveler.com/photos/63482b255e7943ad4006df0b/16:9/w_2560%2Cc_limit/tokyoGettyImages-1031467664.jpeg" alt="Tokyo">{% endcomment %}
-                <div class="card-body">
-                    <h2 class="card-title">{{ cities.name }} {{ cities.pk }}</h2>
-                    <p class="card-text">{{ cities.description }}</p>
-                   {% comment "" %} <a href="https://en.wikipedia.org/wiki/Tokyo_City" class="btn btn-primary">Learn More</a>{% endcomment %}
+
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-12">
+                <h2 class="card-title">{{ city.name }}</h2>
+                <div class="card big-city-card">
+                    <img src="{{ city.image_url }}" alt="{{ city.name }}" class="img-fluid">
+                    <div class="card-body">
+                        <p class="card-text">{{ city.description }}</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-
-
-
-
 
 <div class="container my-5">
-<a href="{% url 'Cities' %}" class="btn btn-primary"><<<<</a>
+
+<a href="{% url 'cities_list' %}" class="btn btn-secondary mt-4">Back to City List</a>
 {#   <a href="https://en.wikipedia.org/wiki/Tokyo_City" >#}
 
 </div>

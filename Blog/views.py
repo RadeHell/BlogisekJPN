@@ -3,6 +3,7 @@ from django.template import loader
 
 from django.shortcuts import render
 from .models import Cities
+from django.shortcuts import render, get_object_or_404
 
 def cities_list(request):
     cities = Cities.objects.all()  # Fetch all cities from the database
@@ -10,7 +11,7 @@ def cities_list(request):
 
 def city_detail(request, id):
     city = get_object_or_404(Cities, id=id)
-    return render(request, 'CityDetail.html', {'city': city})
+    return render(request, 'CityTemp.html', {'city': city})
 
 
 #def CitiesPage(request):
