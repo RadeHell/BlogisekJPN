@@ -5,20 +5,32 @@
 
 <section class="welcome-section content2">
     <div class="container ">
-        <h1 class="display-4">Share Experiences and Learn New Insights</h1>
-        <p class="lead"> Unveiling the Beauty and Wisdom of Japanese Culture, One Post at a Time.</p>
+        <h1 class="display-6"> Welcome to Explore Japan: Your Ultimate Guide to Japan's Hidden Gems</h1>
+   
+
+       <br>
+
+        <p>Japan is a land of contrasts, where the ancient and the modern seamlessly blend to create a unique cultural landscape. 
+        From the neon-lit streets of Tokyo to the serene temples of Kyoto, Japan offers an endless array of experiences for every traveler.
+        Whether you're a first-time visitor or a seasoned explorer, our blog is here to guide you through the wonders of this fascinating country.
+        </p>
+
+        <p>
+        At Explore Japan, we dive deep into the heart of Japan’s most captivating cities, 
+        revealing the best places to visit, eat, and stay. Our blog is not just about the famous landmarks; we take you off the beaten path to discover the lesser-known treasures that make each city unique. Whether you're looking to soak in an onsen in Hakone, wander through the historic districts of Kanazawa, or taste the freshest sushi in Hokkaido, you'll find all the information you need right here.
+        </p>
     </div>
 
 
     <div class="container my-5">
+        <h2 class="display-8"> Popular city of this month is {{ city.name }} 東京</h2>
         <div class="row justify-content-center">
             <div class="col-12">
                 <div class="card big-city-card">
                     <img src="https://media.cntraveler.com/photos/63482b255e7943ad4006df0b/16:9/w_2560%2Cc_limit/tokyoGettyImages-1031467664.jpeg" alt="Tokyo">
                     <div class="card-body">
-                        <h2 class="card-title">Tokyo 東京都</h2>
                         <p class="card-text">Explore the bustling capital city, known for its skyscrapers, shopping, and vibrant culture.</p>
-                        <a href="https://en.wikipedia.org/wiki/Tokyo_City" class="btn btn-primary">Learn More</a>
+                        <a href="{% url 'cities_list' %}"" class="btn btn-primary">Check more cities to visit</a>
                     </div>
                 </div>
             </div>
@@ -26,11 +38,27 @@
     </div>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    {% comment %}
+        
             <div class="container">
                 <h2 class="display-5"> Popular</h2>
                 <div class="row">
                     <div class="col-md-4 mb-4">
-                        <div class="card city-card">
+                     <div class="card city-card">
                             <img src="https://media.istockphoto.com/id/499127037/photo/sika-deer-at-nara-park.jpg?s=612x612&w=0&k=20&c=RXrALZo8hAR0SEyDGyY7O07a2PL6WAxLGju7HD5-J74=" class="card-img" alt="Nara">
                             <div class="card-body">
                                 <h5 class="card-title">Nara</h5>
@@ -97,7 +125,8 @@
                     </div>
                 </div>
             </div>
-
+{% endcomment %}
+    
 
            
 

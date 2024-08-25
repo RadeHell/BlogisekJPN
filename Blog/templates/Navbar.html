@@ -1,31 +1,31 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
    
-
+      <!--
         <a class="navbar-brand" href="{% url 'Main' %}">Main</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-         
+        -->        
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
          
           
-               <li class="nav-item active">
-                <a class="nav-link" href="{% url 'cities_list' %}">Cities </a> <!--  <span class="sr-only">(current)</span>-->
+              <!-- <li class="nav-item active">
+                <a class="nav-link" href="{% url 'cities_list' %}">Cities </a> <
               </li>
-
+-->
             
 
               
-              {% comment "" %}
+              
               <li class="nav-item">
-             <a class="nav-link" href="{% url 'Home' %}">HomePage</a>
+             <a class="nav-link" href="{% url 'Main' %}">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'About' %}">AboutPage</a>
+                <a class="nav-link" href="{% url 'cities_list' %}">Cities</a>
               </li>
-              {% endcomment %}
+            
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'Learn' %}">Learning</a>
               </li>
@@ -38,14 +38,11 @@
            </ul>
 
 
-
-           <form class="col float-end">
-
-            <a class="btn btn-primary btn-md me-md-2 m-1" href="{% url 'Login' %}">Login</a>
-        
-            <a class="btn btn-secondary btn-md m-1"  href="{% url 'Registration' %}">Register</a>
-            </form>
-
+            <div class="ms-auto">
+              <a class="btn btn-secondary btn-md m-1" href="{% url 'Account' %}">Account</a>
+              <a class="btn btn-primary btn-md m-1" href="{% url 'Login' %}">Login</a>
+              <a class="btn btn-secondary btn-md m-1" href="{% url 'Registration' %}">Register</a>
+          </div>
   
 
           </div>

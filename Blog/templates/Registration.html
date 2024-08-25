@@ -2,29 +2,16 @@
 
 {% block content %}
 
+<section class="content2">
 
-
-
-<div class="container form-container content2">
-    <p class="lead"> Registration page</p>
-    <form class="w-100" style="max-width: 500px;">
-        <div class="form-group">
-            <label for="name">Full Name</label>
-            <input type="text" class="form-control" id="name" placeholder="Enter your full name" required>
-        </div>
-        <div class="form-group">
-            <label for="email">Email address</label>
-            <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
-        </div>
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" class="form-control" id="password" placeholder="Enter your password" required>
-        </div>
-        <div class="form-group">
-            <label for="confirmPassword">Confirm Password</label>
-            <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm your password" required>
-        </div>
+<div class="container  mt-5">
+    <h2>Register</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
         <button type="submit" class="btn btn-primary">Register</button>
     </form>
 </div>
+
+</section>
 {% endblock %}

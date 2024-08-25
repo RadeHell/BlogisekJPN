@@ -5,7 +5,7 @@ from . import views
 
 
 urlpatterns = [
-    path('', Main , name='Main'),
+    path('', city_popular , name='Main'),
     path('Cities/<int:cities_id>/', views.CityTemp, name='CityTemp'),
    # path("Cities", CitiesPage, name="Cities"),
     path('cities/', views.cities_list, name='cities_list'),  # List of cities
@@ -15,5 +15,7 @@ urlpatterns = [
     path("TravelOrders", TravelOrders, name="TravelOrders"),
     path("Registration", Registration, name="Registration"),
     path("Login", Login, name="Login"),
-    
+    path('logout', Logout_View, name='Logout'),
+    path('Account', Account, name='Account'),
+
 ]
