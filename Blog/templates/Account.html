@@ -3,22 +3,19 @@
 {% block content %}
  
 
-
-<section class="welcome-section content2">
-    <div class="container ">
-        <h1 class="display-4">Name of Account: {{ user.username }}</h1>
-        <p class="lead"> If you need change info of your profile please contact admin of this site.</p>
-    </div>
+<section class=" container content2">
+ 
 
 
-            <div class="container">
+            <div class="ms-auto"">
                 <h2 class="display-5"></h2>
                 <div class="row">
                     <div class="col-md-4 mb-4">
                         <div class="card city-card">
-                            <img src="https://cdn2.iconfinder.com/data/icons/audio-16/96/user_avatar_profile_login_button_account_member-512.png" class="card-img" alt="AccountAvatar">
+                            <img style="width: 75px; height: 75px;"  src="https://cdn2.iconfinder.com/data/icons/audio-16/96/user_avatar_profile_login_button_account_member-512.png" class="img-fluid rounded-circle" alt="AccountAvatar">
                             <div class="card-body">
                                 <h5 class="card-title">{{ user.username }}</h5>
+                                <p> User email is:  {{ user.email }}</p>
                                 <p class="card-text">Desciption of account</p>
                             </div>
                         </div>
@@ -27,15 +24,9 @@
 
 
 
-                    <div class="container mt-5">
-                        <h2>Welcome, {{ user.username }}</h2>
-                        <p>Email: {{ user.email }}</p>
-                        <!-- Add more user account details here if needed -->
-                    </div>
-   
+                  
 
-           
-
+                    
 
 </section>
 

@@ -12,16 +12,25 @@
                     <img src="{{ city.image_url }}" alt="{{ city.name }}" class="img-fluid">
                     <div class="card-body">
                         <p class="card-text">{{ city.description }}</p>
+                        <p class="card-text">{{ city.parag2 }}</p>
+                        <img src="{{ city.image_url2 }}" class="card-img" alt="{{ city.name }}">
+                        <p class="card-text">{{ city.parag3 }}</p>
+                        <img src="{{ city.image_url3 }}" class="card-img" alt="{{ city.name }}">
+                        <a href="{% url 'cities_list' %}"  class="btn btn-secondary mt-4">Back to City List</a>
                     </div>
                 </div>
             </div>
         </div>
+       
     </div>
 
 <div class="container my-5">
 
-<a href="{% url 'cities_list' %}" class="btn btn-secondary mt-4">Back to City List</a>
-{#   <a href="https://en.wikipedia.org/wiki/Tokyo_City" >#}
+
+
+
+    <button id="scrollToTopBtn" title="Go to top">Top</button>
+
 
 </div>
 

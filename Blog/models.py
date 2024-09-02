@@ -1,15 +1,36 @@
 from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-
+from django.db import models
 from django.contrib.auth.models import User
+
+class VocabularyList(models.Model):
+    name = models.CharField(max_length=100)  # This field exists
+    user = models.ForeignKey(User, on_delete=models.CASCADE)  # This field exists
+
+    def __str__(self):
+        return self.name
+
+class VocabularyWord(models.Model):
+    vocab_list = models.ForeignKey(VocabularyList, related_name='words', on_delete=models.CASCADE)
+    japanese_word = models.CharField(max_length=100)
+    english_translation = models.CharField(max_length=100)
+
+    def __str__(self):
+        return f"{self.japanese_word} - {self.english_translation}"
+
+
 
 
 class Cities(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
     image_url = models.URLField(max_length=200)
-    alt = models.TextField()
+    image_url2 = models.URLField(default="LoremIpsum")
+    image_url3 = models.URLField(default="LoremIpsum")
+    alt = models.TextField(default="LoremIpsum")
+    parag2 = models.TextField(default="LoremIpsum")
+    parag3 = models.TextField(default="LoremIpsum")
 
     def __str__(self):
         return self.name

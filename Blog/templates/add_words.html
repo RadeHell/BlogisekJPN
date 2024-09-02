@@ -1,0 +1,20 @@
+
+{% extends "Main.html" %}
+
+{% block content %}
+
+
+<h1>Add Words to {{ vocab_list.title }}</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Add Word</button>
+</form>
+
+<ul>
+    {% for word in vocab_list.words.all %}
+    <li>{{ word.japanese_word }} - {{ word.english_translation }}</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
