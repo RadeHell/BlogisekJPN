@@ -1,37 +1,54 @@
 {% extends "MainCity.html" %}
 
 {% block content %}
-
-
-    <div class="container my-5">
-        <div class="row justify-content-center">
-            <div class="col-12">
-               
-                <div class="card big-city-card">
-                    <h2 class="card-title">{{ city.name }}</h2>
-                    <img src="{{ city.image_url }}" alt="{{ city.name }}" class="img-fluid">
-                    <div class="card-body">
-                        <p class="card-text">{{ city.description }}</p>
-                        <p class="card-text">{{ city.parag2 }}</p>
-                        <img src="{{ city.image_url2 }}" class="card-img" alt="{{ city.name }}">
-                        <p class="card-text">{{ city.parag3 }}</p>
-                        <img src="{{ city.image_url3 }}" class="card-img" alt="{{ city.name }}">
-                        <a href="{% url 'cities_list' %}"  class="btn btn-secondary mt-4">Back to City List</a>
-                    </div>
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <div class="card big-city-card">
+                <h2 class="card-title">{{ city.name }}</h2>
+                <img src="{{ city.image_url }}" alt="{{ city.name }}" class="img-fluid">
+                <div class="card-body">
+                    <p class="card-text">{{ city.description }}</p>
+                    <!-- Additional content for the city -->
+                    <a href="{% url 'cities_list' %}" class="btn btn-secondary mt-4">Back to City List</a>
                 </div>
             </div>
         </div>
-       
     </div>
+</div>
 
 <div class="container my-5">
+    <!-- Comments Section -->
+    <h3>Comments</h3>
+    <div class="comments">
+        {% for comment in comments %}
+            <div class="comment mb-3">
+                <strong>{{ comment.user.username }}:</strong>
+                <p>{{ comment.text }}</p>
+                <small>Posted on {{ comment.created_at }}</small>
+            </div>
+        {% empty %}
+            <p>No comments yet.</p>
+        {% endfor %}
+    </div>
 
+    {% if user.is_authenticated %}
+        <!-- Comment Form -->
+        <div class="mt-4">
+            <h4>Add a Comment</h4>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    {% else %}
+        <p><a href="{% url 'login' %}">Log in</a> to add a comment.</p>
+    {% endif %}
+</div>
 
-
-
+<div class="container my-5">
     <button id="scrollToTopBtn" title="Go to top">Top</button>
-
-
 </div>
 
 

@@ -1,8 +1,9 @@
 from django.http import HttpResponse
 from django.template import loader
 
-from .models import Cities
+from .models import Cities,Comment
 from django.shortcuts import render,redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
 
 
 from django.contrib.auth import logout
@@ -11,8 +12,8 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
-from .forms import CustomUserCreationForm
-from .forms import ProfileUpdateForm  # Ensure this import is correct
+from .forms import CustomUserCreationForm,ProfileUpdateForm,CommentForm
+
 
 from django.contrib.auth.decorators import login_required
 
@@ -30,9 +31,33 @@ def city_popular(request):
     city = Cities.objects.first() 
     return render(request, 'Home.html', {'city': city})
 
+#def city_detail(request, id):
+#    city = get_object_or_404(Cities, id=id)
+#    return render(request, 'CityTemp.html', {'city': city})
+
+
+
+@login_required
 def city_detail(request, id):
     city = get_object_or_404(Cities, id=id)
-    return render(request, 'CityTemp.html', {'city': city})
+    comments = city.comments.all()
+    
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.city = city
+            comment.user = request.user  # Set the current logged-in user as the comment author
+            comment.save()
+            return redirect('CityTemp', id=city.id)  # Redirect to avoid resubmission on refresh
+    else:
+        form = CommentForm()
+    
+    return render(request, 'CityTemp.html', {
+        'city': city,
+        'comments': comments,
+        'form': form
+    })
 
 
 #def CitiesPage(request):
@@ -90,29 +115,6 @@ def Registration(request):
     return render(request, 'Registration.html', {'form': form})
 
 
-
-####Account avatar src
-from django.http import JsonResponse
-from django.views.decorators.csrf import csrf_exempt
-from .models import Profile
-
-from django.http import JsonResponse
-from django.shortcuts import render
-from django.contrib.auth.decorators import login_required
-from .forms import ProfileUpdateForm
-from .models import Profile
-
-from django.http import JsonResponse
-from django.shortcuts import render
-from django.contrib.auth.decorators import login_required
-from .forms import ProfileUpdateForm
-from .models import Profile
-
-from django.http import JsonResponse
-from django.shortcuts import render
-from django.contrib.auth.decorators import login_required
-from .forms import ProfileUpdateForm
-from .models import Profile
 
 @login_required
 def profile_update(request):
