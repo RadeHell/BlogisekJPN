@@ -8,18 +8,49 @@
 
 
             <div class="ms-auto"">
+                
                 <h2 class="display-5"></h2>
                 <div class="row">
                     <div class="col-md-4 mb-4">
                         <div class="card city-card">
-                            <img style="width: 75px; height: 75px;"  src="https://cdn2.iconfinder.com/data/icons/audio-16/96/user_avatar_profile_login_button_account_member-512.png" class="img-fluid rounded-circle" alt="AccountAvatar">
+                            <img 
+                            style="width: 75px; height: 75px; padding-left: 0.5em; padding-top: 0.5em;"  src="https://cdn2.iconfinder.com/data/icons/audio-16/96/user_avatar_profile_login_button_account_member-512.png" class="img-fluid rounded-circle" alt="AccountAvatar">
                             <div class="card-body">
                                 <h5 class="card-title">{{ user.username }}</h5>
                                 <p> User email is:  {{ user.email }}</p>
-                                <p class="card-text">Desciption of account</p>
+                                <p class="card-text">Suspendisse nec dictum augue. Mauris eu est hendrerit, 
+                                    tincidunt odio a, bibendum turpis. Integer ut vehicula metus, quis convallis eros.
+                                     Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. 
+                                     Nam accumsan arcu quis tellus iaculis, in varius elit venenatis. 
+                                     Phasellus dui sem, dictum eget odio vel, pretium accumsan mi. Sed eget sollicitudin turpis. 
+                                     Ut quis sapien tellus. Fusce at ultricies eros. Vivamus sollicitudin convallis lacus. 
+                                     Ut egestas consequat neque, consequat
+                                     elementum augue malesuada sed. Nunc vehicula velit eu gravida fringilla.</p>
                             </div>
                         </div>
+                    
+                    
                     </div>
+                </div>
+            </div>
+
+            <div class="currency-converter">
+                <h5>Currency Converter</h5>
+            
+                <div class="conversion-section">
+                    <h6>USD to JPY</h6>
+                    <input type="number" id="usdAmount" placeholder="Enter amount in USD">
+                    <button onclick="convertUsdToJpy()">Convert to JPY</button>
+                    <p id="resultUsdToJpy"></p>
+                </div>
+            
+                <div class="conversion-section">
+                    <h6>JPY to USD</h6>
+                    <input type="number" id="jpyAmount" placeholder="Enter amount in JPY">
+                    <button onclick="convertJpyToUsd()">Convert to USD</button>
+                    <p id="resultJpyToUsd"></p>
+                </div>
+            </div>
 
 
 

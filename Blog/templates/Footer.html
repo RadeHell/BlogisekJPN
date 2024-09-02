@@ -7,6 +7,28 @@
     
         <p> If you need change info of your profile please <b>contact admin of this site</b>.</p>
 
+<script>
+    function convertCurrency() {
+        const usdAmount = document.getElementById('usdAmount').value;
+    
+        // Frankfurter API URL for converting USD to JPY
+        const url = `https://api.frankfurter.app/latest?amount=${usdAmount}&from=USD&to=JPY`;
+    
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                const jpyAmount = data.rates.JPY;
+                document.getElementById('result').innerText = `${usdAmount} USD = ${jpyAmount} JPY`;
+            })
+            .catch(error => {
+                document.getElementById('result').innerText = 'Error fetching exchange rate';
+                console.error('Error:', error);
+            });
+    }
+    
+    
+</script>
+        
 
     {% endif %}
     </div>
@@ -39,4 +61,10 @@ mybutton.onclick = function() {
 };
 </script>
 {% endif %}
+
+
+
+
+
+
   </footer>
