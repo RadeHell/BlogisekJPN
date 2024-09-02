@@ -11,74 +11,11 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
+from .forms import CustomUserCreationForm
+from .forms import ProfileUpdateForm  # Ensure this import is correct
 
 from django.contrib.auth.decorators import login_required
-from .models import VocabularyList, VocabularyWord
-from .forms import VocabularyListForm, VocabularyWordForm
 
-@login_required
-def create_vocabulary_list(request):
-    if request.method == 'POST':
-        form = VocabularyListForm(request.POST)
-        if form.is_valid():
-            vocab_list = form.save(commit=False)
-            vocab_list.user = request.user
-            vocab_list.save()
-            return redirect('add_words', vocab_list_id=vocab_list.id)
-    else:
-        form = VocabularyListForm()
-    return render(request, 'create_vocabulary_list.html', {'form': form})
-
-@login_required
-def add_words(request, vocab_list_id):
-    vocab_list = get_object_or_404(VocabularyList, id=vocab_list_id)
-    if request.method == 'POST':
-        form = VocabularyWordForm(request.POST)
-        if form.is_valid():
-            word = form.save(commit=False)
-            word.vocab_list = vocab_list
-            word.save()
-            if vocab_list.words.count() >= 50:
-                return redirect('preview_words', vocab_list_id=vocab_list.id)
-    else:
-        form = VocabularyWordForm()
-    return render(request, 'add_words.html', {'form': form, 'vocab_list': vocab_list})
-
-def preview_words(request, vocab_list_id):
-    vocab_list = get_object_or_404(VocabularyList, id=vocab_list_id)
-    words = vocab_list.words.all()[:50]
-    return render(request, 'preview_words.html', {'vocab_list': vocab_list, 'words': words})
-
-@login_required
-def edit_vocabulary_list(request, vocab_list_id):
-    vocab_list = get_object_or_404(VocabularyList, id=vocab_list_id)
-    if request.method == 'POST':
-        form = VocabularyListForm(request.POST, instance=vocab_list)
-        if form.is_valid():
-            form.save()
-            return redirect('preview_words', vocab_list_id=vocab_list.id)
-    else:
-        form = VocabularyListForm(instance=vocab_list)
-    return render(request, 'edit_vocabulary_list.html', {'form': form, 'vocab_list': vocab_list})
-
-@login_required
-def delete_vocabulary_list(request, vocab_list_id):
-    vocab_list = get_object_or_404(VocabularyList, id=vocab_list_id)
-    if request.method == 'POST':
-        vocab_list.delete()
-        return redirect('home')
-    return render(request, 'delete_vocabulary_list.html', {'vocab_list': vocab_list})
-
-
-# View for the user's vocabulary lists
-def user_vocab_lists(request):
-    vocab_lists = VocabularyList.objects.filter(user=request.user)  # Filter lists by the logged-in user
-    return render(request, 'user_vocab_lists.html', {'vocab_lists': vocab_lists})
-
-# View for details of a specific vocabulary list
-def vocab_list_detail(request, list_id):
-    vocab_list = get_object_or_404(VocabularyList, id=list_id, user=request.user)
-    return render(request, 'vocab_list_detail.html', {'vocab_list': vocab_list})
 
 
 
@@ -143,14 +80,64 @@ def Logout_View(request):
 
 def Registration(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
             login(request, user)
             return redirect('Main')  # Redirect to home after successful registration
     else:
-        form = UserCreationForm()
+        form = CustomUserCreationForm()
     return render(request, 'Registration.html', {'form': form})
+
+
+
+####Account avatar src
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from .models import Profile
+
+from django.http import JsonResponse
+from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+from .forms import ProfileUpdateForm
+from .models import Profile
+
+from django.http import JsonResponse
+from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+from .forms import ProfileUpdateForm
+from .models import Profile
+
+from django.http import JsonResponse
+from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+from .forms import ProfileUpdateForm
+from .models import Profile
+
+@login_required
+def profile_update(request):
+    if request.method == 'POST':
+        form = ProfileUpdateForm(request.POST, request.FILES)
+        if form.is_valid():
+            profile, created = Profile.objects.get_or_create(user=request.user)
+            profile.bio = form.cleaned_data['bio']
+            profile.location = form.cleaned_data['location']
+            if 'avatar' in request.FILES:
+                profile.avatar = request.FILES['avatar']
+            profile.save()
+            
+            # Return JSON response for AJAX request
+            if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+                return JsonResponse({'success': True})
+            
+            return redirect('profile')  # Redirect if not an AJAX request
+        
+        # Return JSON response for AJAX request with form errors
+        if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+            return JsonResponse({'success': False, 'errors': form.errors})
+
+    # Render the form for non-AJAX requests
+    return render(request, 'profile_update.html', {'form': ProfileUpdateForm()})
 
 
 

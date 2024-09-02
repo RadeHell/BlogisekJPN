@@ -6,32 +6,61 @@
 <section class=" container content2">
  
 
-
-            <div class="ms-auto"">
-                
-                <h2 class="display-5"></h2>
-                <div class="row">
-                    <div class="col-md-4 mb-4">
-                        <div class="card city-card">
-                            <img 
-                            style="width: 75px; height: 75px; padding-left: 0.5em; padding-top: 0.5em;"  src="https://cdn2.iconfinder.com/data/icons/audio-16/96/user_avatar_profile_login_button_account_member-512.png" class="img-fluid rounded-circle" alt="AccountAvatar">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ user.username }}</h5>
-                                <p> User email is:  {{ user.email }}</p>
-                                <p class="card-text">Suspendisse nec dictum augue. Mauris eu est hendrerit, 
-                                    tincidunt odio a, bibendum turpis. Integer ut vehicula metus, quis convallis eros.
-                                     Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. 
-                                     Nam accumsan arcu quis tellus iaculis, in varius elit venenatis. 
-                                     Phasellus dui sem, dictum eget odio vel, pretium accumsan mi. Sed eget sollicitudin turpis. 
-                                     Ut quis sapien tellus. Fusce at ultricies eros. Vivamus sollicitudin convallis lacus. 
-                                     Ut egestas consequat neque, consequat
-                                     elementum augue malesuada sed. Nunc vehicula velit eu gravida fringilla.</p>
+    <div class="container mt-5">
+        <h2>Profile</h2>
+        <div class="col-md-4 mb-4">
+            <div class="card city-card">
+                <a href="#" id="change-avatar">
+                    <img 
+                        style="width: 75px; height: 75px; padding-left: 0.5em; padding-top: 0.5em;"  
+                        src="{% if user.profile.avatar %}{{ user.profile.avatar }}{% else %}https://cdn2.iconfinder.com/data/icons/audio-16/96/user_avatar_profile_login_button_account_member-512.png{% endif %}" 
+                        class="img-fluid rounded-circle" 
+                        alt="AccountAvatar">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">{{ user.username }}</h5>
+                    <p>User email is: {{ user.email }}</p>
+                    <p>Bio: {% if user.profile.bio %}{{ user.profile.bio }}{% else %}No bio set{% endif %}</p>
+                    <p>Location: {% if user.profile.location %}{{ user.profile.location }}{% else %}No location set{% endif %}</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal HTML -->
+        <div class="modal fade" id="avatarModal" tabindex="-1" aria-labelledby="avatarModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="avatarModalLabel">Update Avatar</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="profile-form">
+                            <div class="mb-3">
+                                <label for="avatar-url" class="form-label">Avatar URL</label>
+                                <input type="text" class="form-control" id="avatar-url" placeholder="Enter avatar URL">
                             </div>
-                        </div>
-                    
-                    
+                            <div class="mb-3">
+                                <label for="description" class="form-label">Bio</label>
+                                <textarea class="form-control" id="description" rows="4" placeholder="Enter a bio"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="location" class="form-label">Location</label>
+                                <input type="text" class="form-control" id="location" placeholder="Enter your location">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Update Profile</button>
+                        </form>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+    
+                
+                
+
+
+
             </div>
 
             <div class="currency-converter">
@@ -41,6 +70,7 @@
                     <h6>USD to JPY</h6>
                     <input type="number" id="usdAmount" placeholder="Enter amount in USD">
                     <button onclick="convertUsdToJpy()">Convert to JPY</button>
+                    <button onclick="clearUsdToJpy()">Clear</button>
                     <p id="resultUsdToJpy"></p>
                 </div>
             
@@ -48,9 +78,48 @@
                     <h6>JPY to USD</h6>
                     <input type="number" id="jpyAmount" placeholder="Enter amount in JPY">
                     <button onclick="convertJpyToUsd()">Convert to USD</button>
+                    <button onclick="clearJpyToUsd()">Clear</button>
                     <p id="resultJpyToUsd"></p>
                 </div>
             </div>
+            
+
+
+    <!-- Profile Update Button (This can be a link or button that opens the modal) -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#profileUpdateModal">
+        Update Profile
+    </button>
+
+ <!-- Profile Update Modal -->
+
+<div class="modal fade" id="avatarModal" tabindex="-1" aria-labelledby="avatarModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="avatarModalLabel">Update Profile</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="profile-form" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="avatar-url" class="form-label">Avatar URL</label>
+                        <input type="text" class="form-control" id="avatar-url" name="avatar_url">
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Description</label>
+                        <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="avatar-upload" class="form-label">Upload Avatar</label>
+                        <input type="file" class="form-control" id="avatar-upload" name="avatar">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 

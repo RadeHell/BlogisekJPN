@@ -4,23 +4,6 @@ from django.dispatch import receiver
 from django.db import models
 from django.contrib.auth.models import User
 
-class VocabularyList(models.Model):
-    name = models.CharField(max_length=100)  # This field exists
-    user = models.ForeignKey(User, on_delete=models.CASCADE)  # This field exists
-
-    def __str__(self):
-        return self.name
-
-class VocabularyWord(models.Model):
-    vocab_list = models.ForeignKey(VocabularyList, related_name='words', on_delete=models.CASCADE)
-    japanese_word = models.CharField(max_length=100)
-    english_translation = models.CharField(max_length=100)
-
-    def __str__(self):
-        return f"{self.japanese_word} - {self.english_translation}"
-
-
-
 
 class Cities(models.Model):
     name = models.CharField(max_length=100)
@@ -48,7 +31,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.TextField(blank=True)
     location = models.CharField(max_length=100, blank=True)
-    
+    avatar = models.URLField(blank=True, null=True)  # New field for avatar URL
 
     def __str__(self):
         return self.user.username

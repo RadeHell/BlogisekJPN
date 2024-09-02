@@ -18,7 +18,7 @@ body{
 }
 
 
-
+/* Click to TOP on city page */
 #scrollToTopBtn {
     display: none; /* Hidden by default */
     position: fixed; /* Fixed/sticky position */
@@ -38,35 +38,28 @@ body{
 #scrollToTopBtn:hover {
     background-color: #333; /* Darker background on hover */
 }
-.currency-converter {
-    border: 1px solid #ccc;
-    padding: 15px;
-    border-radius: 8px;
-    max-width: 300px;
-    margin: 20px;
-    text-align: left;
-}
 
-.conversion-section {
-    margin-bottom: 20px;
-}
 
-.currency-converter input, .currency-converter button {
-    margin: 10px 0;
-    padding: 8px;
-    font-size: 16px;
-    width: 100%;
-}
-
+/* Exchange butons etc.. */
 .currency-converter button {
     background-color: #28a745;
     color: white;
     border: none;
     cursor: pointer;
+    margin: 5px 0;
+}
+
+.currency-converter button.clear {
+    background-color: #dc3545; /* Red color for the clear button */
 }
 
 .currency-converter button:hover {
     background-color: #218838;
 }
+
+.currency-converter button.clear:hover {
+    background-color: #c82333; /* Darker red for hover */
+}
+
 
 </style>
