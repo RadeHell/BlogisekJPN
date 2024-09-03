@@ -5,51 +5,64 @@
     <div class="row justify-content-center">
         <div class="col-12">
             <div class="card big-city-card">
-                <h2 class="card-title">{{ city.name }}</h2>
-                <img src="{{ city.image_url }}" alt="{{ city.name }}" class="img-fluid">
+                <h1 class="card-title">{{ city.name }}</h1>
+                <img src="{{ city.image_url }}" alt="{{ city.name }}"  class="img-fluid d-block mx-auto">
                 <div class="card-body">
                     <p class="card-text">{{ city.description }}</p>
+                    <p><img src="{{ city.image_url2 }}" alt="{{ city.name }}"  class="img-fluid d-block mx-auto"></p>
+                    <p class="card-text col text-center">{{ city.parag2 }}</p>
+                   <p> <img src="{{ city.image_url3 }}" alt="{{ city.name }}"  class="img-fluid d-block mx-auto"></p>
+                    <p class="card-text col text-center">{{ city.parag3 }}</p>
                     <!-- Additional content for the city -->
                     <a href="{% url 'cities_list' %}" class="btn btn-secondary mt-4">Back to City List</a>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<div class="container my-5">
-    <!-- Comments Section -->
-    <h3>Comments</h3>
-    <div class="comments">
-        {% for comment in comments %}
-            <div class="comment mb-3">
-                <strong>{{ comment.user.username }}:</strong>
-                <p>{{ comment.text }}</p>
-                <small>Posted on {{ comment.created_at }}</small>
-            </div>
-        {% empty %}
-            <p>No comments yet.</p>
-        {% endfor %}
-    </div>
 
+    <br>
+    <h3 class="text-center">Comment section city:{{ city.name }}</h3>
+    <br>
+
+    <!-- Display comments -->
+    <ul>
+      {% for comment in comments %}
+        <li>{{ comment.author.username }}: {{ comment.text }} ({{ comment.created_at }})</li>
+      {% empty %}
+        <li>No comments yet.</li>
+      {% endfor %}
+    </ul>
+    
+    <!-- Display the comment form if the user is logged in -->
     {% if user.is_authenticated %}
-        <!-- Comment Form -->
-        <div class="mt-4">
-            <h4>Add a Comment</h4>
-            <form method="post">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-        </div>
+      <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Add Comment</button>
+      </form>
     {% else %}
-        <p><a href="{% url 'login' %}">Log in</a> to add a comment.</p>
+      <p>You must be logged in to add a comment.</p>
     {% endif %}
+    
+
 </div>
+
 
 <div class="container my-5">
     <button id="scrollToTopBtn" title="Go to top">Top</button>
 </div>
+
+
+
+
+
+
+
+
+
+
+
 
 
 

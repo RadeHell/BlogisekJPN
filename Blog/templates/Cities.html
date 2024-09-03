@@ -10,12 +10,14 @@
         <div class="col-md-6 mb-3">
             <div class="card city-card">
                 <div class="card-body">
+                    <br>
                     <img src="{{ city.image_url }}" class="card-img" alt="{{ city.name }}">
+                    <br>
                     <h5 class="card-title">
+                        <br>
                         <a href="{% url 'CityTemp' city.id %}">{{ city.name }}</a> <!-- Use the city ID to generate a dynamic URL -->
                     </h5>
                     <p class="card-text">{{ city.description }}</p> <!-- Display city description -->
-                    
                 </div>
             </div>
         </div>

@@ -1,0 +1,70 @@
+{% extends "Main.html" %}
+
+{% block content %}
+ 
+
+<section class="welcome-section content2">
+    
+    
+
+
+
+
+    <div class="container">
+        <h1>Live English-Japanese Translator</h1>
+
+        <div class="form-group">
+            <label for="source-text">Type text to translate:</label>
+            <textarea id="source-text" rows="4" placeholder="Enter text here..."></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="direction">Translation direction:</label>
+            <select id="direction">
+                <option value="en|ja">English to Japanese</option>
+                <option value="ja|en">Japanese to English</option>
+            </select>
+        </div>
+
+        <div id="result">
+            <h3>Translation:</h3>
+            <p id="translated-text"></p>
+        </div>
+    </div>
+           
+
+
+
+
+    <div>
+        <label for="source-text">Enter text:</label>
+        <textarea id="source-text" placeholder="Type something..."></textarea>
+    </div>
+    <div>
+        <button id="translate-btn">Translate</button>
+    </div>
+    <div>
+        <p id="translated-text"></p>
+    </div>
+    
+    <script>
+        document.getElementById('translate-btn').addEventListener('click', function() {
+            const text = document.getElementById('source-text').value;
+    
+            fetch('/translate/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'X-CSRFToken': '{{ csrf_token }}' },
+                body: JSON.stringify({ text: text, target_language: 'ja' })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('translated-text').textContent = data.translated_text;
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    </script>
+    
+
+</section>
+
+{% endblock %}

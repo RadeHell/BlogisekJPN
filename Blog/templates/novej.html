@@ -21,7 +21,7 @@
                     <h5 class="card-title">{{ user.username }}</h5>
                     <p>User email is: {{ user.email }}</p>
                     <p>Bio: {% if user.profile.bio %}{{ user.profile.bio }}{% else %}No bio set{% endif %}</p>
-                    <p>Location: {% if user.profile.location %}<a href="https://www.google.com/maps/search/{{ user.profile.location }}"{% else %}No location set{% endif %}</p>
+                    <p>Location: {% if user.profile.location %}{{ user.profile.location }}{% else %}No location set{% endif %}</p>
                 </div>
             </div>
         </div>
@@ -97,3 +97,35 @@
 </section>
 
 {% endblock %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var avatarModal = new bootstrap.Modal(document.getElementById('avatarModal'));
+
+    document.getElementById('change-avatar').addEventListener('click', function() {
+        avatarModal.show();
+    });
+
+    document.getElementById('profile-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        var form = new FormData(this);
+        
+        fetch('{% url "update_profile" %}', {
+            method: 'POST',
+            body: form,
+            headers: {
+                'X-CSRFToken': '{{ csrf_token }}',
+                'X-Requested-With': 'XMLHttpRequest'  // This header indicates an AJAX request
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                location.reload();  // Reload page to update profile
+            } else {
+                alert('Error updating profile: ' + JSON.stringify(data.errors));
+            }
+        });
+    });
+});
+</script>

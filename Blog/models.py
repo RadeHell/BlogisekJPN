@@ -20,7 +20,7 @@ class Cities(models.Model):
 
 class Comment(models.Model):
     city = models.ForeignKey(Cities, related_name='comments', on_delete=models.CASCADE)
-    author = models.CharField(max_length=100)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
     text = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
 

@@ -17,6 +17,8 @@ from .forms import CustomUserCreationForm,ProfileUpdateForm,CommentForm
 
 from django.contrib.auth.decorators import login_required
 
+from django.http import JsonResponse
+
 
 
 
@@ -47,7 +49,7 @@ def city_detail(request, id):
         if form.is_valid():
             comment = form.save(commit=False)
             comment.city = city
-            comment.user = request.user  # Set the current logged-in user as the comment author
+            comment.author = request.user  # Set the current logged-in user as the comment author
             comment.save()
             return redirect('CityTemp', id=city.id)  # Redirect to avoid resubmission on refresh
     else:
@@ -58,7 +60,6 @@ def city_detail(request, id):
         'comments': comments,
         'form': form
     })
-
 
 #def CitiesPage(request):
 #    cities = Cities.objects.filter(id=1)  # Fetch all cities from the database
@@ -92,6 +93,8 @@ def Account(request):
 def Learn(request):
   template = loader.get_template('Learn.html')
   return HttpResponse(template.render())
+
+
 
 def TravelOrders(request):
   template = loader.get_template('TravelOrders.html')
@@ -141,16 +144,6 @@ def profile_update(request):
     # Render the form for non-AJAX requests
     return render(request, 'profile_update.html', {'form': ProfileUpdateForm()})
 
-
-
-
-#def Registration(request):
-#  template = loader.get_template('Registration.html')
-#  return HttpResponse(template.render())
-
-#def Login(request):
-#  template = loader.get_template('Login.html')
-#  return HttpResponse(template.render())
 
 
 def Login(request):
