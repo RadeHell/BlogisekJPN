@@ -5,64 +5,327 @@
 
 <section class="welcome-section content2">
     
-    
 
-
-
-
-    <div class="container">
-        <h1>Live English-Japanese Translator</h1>
-
-        <div class="form-group">
-            <label for="source-text">Type text to translate:</label>
-            <textarea id="source-text" rows="4" placeholder="Enter text here..."></textarea>
+    <style>
+        .table td, .table th {
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Travel Phrases: English and Japanese</h1>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>English</th>
+                        <th>Japanese</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>My name is: ...</td>
+                        <td>私の名前は: ... (Watashi no name wa: ...)</td>
+                    </tr>
+                    <tr>
+                        <td>Hello.</td>
+                        <td>こんにちは (Konnichiwa)</td>
+                    </tr>
+                    <tr>
+                        <td>Thank you very much.</td>
+                        <td>どうもありがとうございます (Dōmo arigatō gozaimasu)</td>
+                    </tr>
+                    <tr>
+                        <td>Excuse me.</td>
+                        <td>すみません (Sumimasen)</td>
+                    </tr>
+                    <tr>
+                        <td>I'm sorry.</td>
+                        <td>ごめんなさい (Gomen nasai)</td>
+                    </tr>
+                    <tr>
+                        <td>Goodbye.</td>
+                        <td>さようなら (Sayōnara)</td>
+                    </tr>
+                    <tr>
+                        <td>Where is the train station?</td>
+                        <td>駅はどこですか？ (Eki wa doko desu ka?)</td>
+                    </tr>
+                    <tr>
+                        <td>How much is a ticket to Tokyo?</td>
+                        <td>東京までのチケットはいくらですか？ (Tōkyō made no chiketto wa ikura desu ka?)</td>
+                    </tr>
+                    <tr>
+                        <td>I need a taxi.</td>
+                        <td>タクシーが必要です。 (Takushī ga hitsuyō desu.)</td>
+                    </tr>
+                    <tr>
+                        <td>Can you help me?</td>
+                        <td>助けてくれますか？ (Tasukete kuremasu ka?)</td>
+                    </tr>
+                    <tr>
+                        <td>Do you speak English?</td>
+                        <td>英語を話せますか？ (Eigo o hanasemasu ka?)</td>
+                    </tr>
+                    <tr>
+                        <td>I don’t understand.</td>
+                        <td>わかりません。 (Wakarimasen.)</td>
+                    </tr>
+                    <tr>
+                        <td>Can I have the menu, please?</td>
+                        <td>メニューをください。 (Menyū o kudasai.)</td>
+                    </tr>
+                    <tr>
+                        <td>I would like to order.</td>
+                        <td>注文したいです。 (Chūmon shitai desu.)</td>
+                    </tr>
+                    <tr>
+                        <td>How much does this cost?</td>
+                        <td>これはいくらですか？ (Kore wa ikura desu ka?)</td>
+                    </tr>
+                    <tr>
+                        <td>Where can I find a pharmacy?</td>
+                        <td>薬局はどこですか？ (Yakkyoku wa doko desu ka?)</td>
+                    </tr>
+                    <tr>
+                        <td>I am lost.</td>
+                        <td>迷いました。 (Mayoimashita.)</td>
+                    </tr>
+                    <tr>
+                        <td>Is this seat taken?</td>
+                        <td>この席は空いていますか？ (Kono seki wa aiteimasu ka?)</td>
+                    </tr>
+                    <tr>
+                        <td>Can I have the bill, please?</td>
+                        <td>お勘定をお願いします。 (Okanjō o onegaishimasu.)</td>
+                    </tr>
+                    <tr>
+                        <td>What time is it?</td>
+                        <td>今何時ですか？ (Ima nan-ji desu ka?)</td>
+                    </tr>
+                    <tr>
+                        <td>Where is the nearest ATM?</td>
+                        <td>最寄りのATMはどこですか？ (Moyori no ATM wa doko desu ka?)</td>
+                    </tr>
+                    <tr>
+                        <td>Can I pay by credit card?</td>
+                        <td>クレジットカードで支払えますか？ (Kurejitto kādo de shiharaemasu ka?)</td>
+                    </tr>
+                    <tr>
+                        <td>I need an interpreter.</td>
+                        <td>通訳が必要です。 (Tsūyaku ga hitsuyō desu.)</td>
+                    </tr>
+                    <tr>
+                        <td>Where is the nearest hotel?</td>
+                        <td>最寄りのホテルはどこですか？ (Moyori no hoteru wa doko desu ka?)</td>
+                    </tr>
+                    <tr>
+                        <td>Do you have a room available?</td>
+                        <td>空いている部屋はありますか？ (Aite iru heya wa arimasu ka?)</td>
+                    </tr>
+                    <tr>
+                        <td>Can I get a wake-up call?</td>
+                        <td>モーニングコールをお願いできますか？ (Mōningu kōru o onegaidekimasu ka?)</td>
+                    </tr>
+                    <tr>
+                        <td>Is breakfast included?</td>
+                        <td>朝食は含まれていますか？ (Chōshoku wa fukumareteimasu ka?)</td>
+                    </tr>
+                    <tr>
+                        <td>I would like to check out.</td>
+                        <td>チェックアウトしたいです。 (Chekkuauto shitai desu.)</td>
+                    </tr>
+                    <tr>
+                        <td>Can I have a map?</td>
+                        <td>地図をください。 (Chizu o kudasai.)</td>
+                    </tr>
+                    <tr>
+                        <td>How far is it to the airport?</td>
+                        <td>空港までどれくらいですか？ (Kūkō made dorekurai desu ka?)</td>
+                    </tr>
+                    <tr>
+                        <td>Do you have a special menu for children?</td>
+                        <td>子供向けの特別メニューはありますか？ (Kodomo-muke no tokubetsu menyū wa arimasu ka?)</td>
+                    </tr>
+                    <tr>
+                        <td>Can I have some water?</td>
+                        <td>水をください。 (Mizu o kudasai.)</td>
+                    </tr>
+                    <tr>
+                        <td>Where is the nearest supermarket?</td>
+                        <td>最寄りのスーパーはどこですか？ (Moyori no sūpā wa doko desu ka?)</td>
+                    </tr>
+                    <tr>
+                        <td>What is the Wi-Fi password?</td>
+                        <td>Wi-Fiのパスワードは何ですか？ (Wi-Fi no pasuwādo wa nan desu ka?)</td>
+                    </tr>
+                    <tr>
+                        <td>I am allergic to nuts.</td>
+                        <td>ナッツにアレルギーがあります。 (Nattsu ni arerugī ga arimasu.)</td>
+                    </tr>
+                    <tr>
+                        <td>Can I see the wine list?</td>
+                        <td>ワインリストを見せてください。 (Wain risuto o misete kudasai.)</td>
+                    </tr>
+                    <tr>
+                        <td>Do you offer a shuttle service?</td>
+                        <td>シャトルサービスはありますか？ (Shatoru sābisu wa arimasu ka?)</td>
+                    </tr>
+                    <tr>
+                        <td>Where can I rent a car?</td>
+                        <td>車をレンタルできる場所はどこですか？ (Kuruma o rentaru dekiru basho wa doko desu ka?)</td>
+                    </tr>
+                    <tr>
+                        <td>I need to buy a SIM card.</td>
+                        <td>SIMカードを買う必要があります。 (SIM kādo o kau hitsuyō ga arimasu.)</td>
+                    </tr>
+                    <tr>
+                        <td>Can you recommend a good restaurant?</td>
+                        <td>おすすめのレストランを教えてください。 (Osusume no resutoran o oshiete kudasai.)</td>
+                    </tr>
+                    <tr>
+                        <td>I have a reservation.</td>
+                        <td>予約があります。 (Yoyaku ga arimasu.)</td>
+                    </tr>
+                    <tr>
+                        <td>I would like a non-smoking room.</td>
+                        <td>禁煙ルームをお願いします。 (Kinen rūmu o onegaishimasu.)</td>
+                    </tr>
+                    <tr>
+                        <td>Is there a laundry service?</td>
+                        <td>ランドリーサービスはありますか？ (Randoorī sābisu wa arimasu ka?)</td>
+                    </tr>
+                    <tr>
+                        <td>Can you call a doctor?</td>
+                        <td>医者を呼んでいただけますか？ (Isha o yonde itadakemasu ka?)</td>
+                    </tr>
+                    <tr>
+                        <td>Do you have any recommendations?</td>
+                        <td>何かおすすめはありますか？ (Nanika osusume wa arimasu ka?)</td>
+                    </tr>
+                    <tr>
+                        <td>What is this dish?</td>
+                        <td>この料理は何ですか？ (Kono ryōri wa nan desu ka?)</td>
+                    </tr>
+                    <tr>
+                        <td>Can you take a picture for me?</td>
+                        <td>写真を撮っていただけますか？ (Shashin o totte itadakemasu ka?)</td>
+                    </tr>
+                    <tr>
+                        <td>Is there a tourist information center?</td>
+                        <td>観光案内所はありますか？ (Kankō annai-sho wa arimasu ka?)</td>
+                    </tr>
+                    <tr>
+                        <td>How do I get to this address?</td>
+                        <td>この住所にどうやって行きますか？ (Kono jūsho ni dō yatte ikimasu ka?)</td>
+                    </tr>
+                    <tr>
+                        <td>Can I see the receipt?</td>
+                        <td>領収書を見せてください。 (Ryōshūsho o misete kudasai.)</td>
+                    </tr>
+                    <tr>
+                        <td>Do you have any vegetarian options?</td>
+                        <td>ベジタリアン向けのメニューはありますか？ (Bejitarian-muke no menyū wa arimasu ka?)</td>
+                    </tr>
+                    <tr>
+                        <td>Can I have some more ice?</td>
+                        <td>氷をもっといただけますか？ (Kōri o motto itadakemasu ka?)</td>
+                    </tr>
+                    <tr>
+                        <td>What time does the shop close?</td>
+                        <td>この店は何時に閉まりますか？ (Kono mise wa nan-ji ni shimarimasu ka?)</td>
+                    </tr>
+                    <tr>
+                        <td>Is there a charge for Wi-Fi?</td>
+                        <td>Wi-Fiに料金はかかりますか？ (Wi-Fi ni ryōkin wa kakarimasu ka?)</td>
+                    </tr>
+                    <tr>
+                        <td>Can you recommend a local attraction?</td>
+                        <td>地元の観光名所をおすすめしますか？ (Jimoto no kankō meisho o osusume shimasu ka?)</td>
+                    </tr>
+                    <tr>
+                        <td>Where can I buy souvenirs?</td>
+                        <td>お土産はどこで買えますか？ (Omiyage wa doko de kaemasu ka?)</td>
+                    </tr>
+                    <tr>
+                        <td>What’s the best way to get around?</td>
+                        <td>移動するのに最適な方法は何ですか？ (Idō suru no ni saiteki na hōhō wa nan desu ka?)</td>
+                    </tr>
+                    <tr>
+                        <td>Can you show me on the map?</td>
+                        <td>地図で見せていただけますか？ (Chizu de misete itadakemasu ka?)</td>
+                    </tr>
+                    <tr>
+                        <td>Is there a nearby park?</td>
+                        <td>近くに公園はありますか？ (Chikaku ni kōen wa arimasu ka?)</td>
+                    </tr>
+                    <tr>
+                        <td>Can I use my phone here?</td>
+                        <td>ここで電話を使ってもいいですか？ (Koko de denwa o tsukatte mo ii desu ka?)</td>
+                    </tr>
+                    <tr>
+                        <td>What time does the last train leave?</td>
+                        <td>最後の電車は何時に出発しますか？ (Saigo no densha wa nan-ji ni shuppatsu shimasu ka?)</td>
+                    </tr>
+                    <tr>
+                        <td>Do you have a vegetarian menu?</td>
+                        <td>ベジタリアンメニューはありますか？ (Bejitarian menyū wa arimasu ka?)</td>
+                    </tr>
+                    <tr>
+                        <td>Can you provide a receipt?</td>
+                        <td>領収書をいただけますか？ (Ryōshūsho o itadakemasu ka?)</td>
+                    </tr>
+                    <tr>
+                        <td>Where is the nearest police station?</td>
+                        <td>最寄りの警察署はどこですか？ (Moyori no keisatsusho wa doko desu ka?)</td>
+                    </tr>
+                    <tr>
+                        <td>Do you offer room service?</td>
+                        <td>ルームサービスはありますか？ (Rūmu sābisu wa arimasu ka?)</td>
+                    </tr>
+                    <tr>
+                        <td>Is there a doctor available?</td>
+                        <td>医者はいますか？ (Isha wa imasu ka?)</td>
+                    </tr>
+                    <tr>
+                        <td>Can I get a taxi to the airport?</td>
+                        <td>空港までのタクシーを呼んでいただけますか？ (Kūkō made no takushī o yonde itadakemasu ka?)</td>
+                    </tr>
+                    <tr>
+                        <td>How can I contact you?</td>
+                        <td>どうやって連絡できますか？ (Dō yatte renraku dekimasu ka?)</td>
+                    </tr>
+                    <tr>
+                        <td>Can I have a wake-up call at 7 AM?</td>
+                        <td>朝7時にモーニングコールをお願いできますか？ (Asa 7-ji ni mōningu kōru o onegaidekimasu ka?)</td>
+                    </tr>
+                    <tr>
+                        <td>Where can I find a good place to eat?</td>
+                        <td>美味しい食事ができる場所はどこですか？ (Oishii shokuji ga dekiru basho wa doko desu ka?)</td>
+                    </tr>
+                    <tr>
+                        <td>Can I use the internet here?</td>
+                        <td>ここでインターネットを使えますか？ (Koko de intānetto o tsukaemasu ka?)</td>
+                    </tr>
+                    <tr>
+                        <td>Are there any local festivals happening?</td>
+                        <td>地元の祭りはありますか？ (Jimoto no matsuri wa arimasu ka?)</td>
+                    </tr>
+                    <tr>
+                        <td>What’s the best way to get to the city center?</td>
+                        <td>市中心部への最適な移動方法は何ですか？ (Shi chūshinbu e no saiteki na idō hōhō wa nan desu ka?)</td>
+                    </tr>
+                    <tr>
+                        <td>Can you recommend a local guide?</td>
+                        <td>地元のガイドを推薦できますか？ (Jimoto no gaido o suisen dekimasu ka?)</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-
-        <div class="form-group">
-            <label for="direction">Translation direction:</label>
-            <select id="direction">
-                <option value="en|ja">English to Japanese</option>
-                <option value="ja|en">Japanese to English</option>
-            </select>
-        </div>
-
-        <div id="result">
-            <h3>Translation:</h3>
-            <p id="translated-text"></p>
-        </div>
     </div>
-           
+  
 
-
-
-
-    <div>
-        <label for="source-text">Enter text:</label>
-        <textarea id="source-text" placeholder="Type something..."></textarea>
-    </div>
-    <div>
-        <button id="translate-btn">Translate</button>
-    </div>
-    <div>
-        <p id="translated-text"></p>
-    </div>
-    
-    <script>
-        document.getElementById('translate-btn').addEventListener('click', function() {
-            const text = document.getElementById('source-text').value;
-    
-            fetch('/translate/', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json', 'X-CSRFToken': '{{ csrf_token }}' },
-                body: JSON.stringify({ text: text, target_language: 'ja' })
-            })
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById('translated-text').textContent = data.translated_text;
-            })
-            .catch(error => console.error('Error:', error));
-        });
-    </script>
     
 
 </section>

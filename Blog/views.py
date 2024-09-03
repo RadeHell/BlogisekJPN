@@ -2,26 +2,28 @@ from django.http import HttpResponse
 from django.template import loader
 
 from .models import Cities,Comment
-from django.shortcuts import render,redirect, get_object_or_404
+from django.shortcuts import render,redirect, get_object_or_404,redirect
 from django.contrib.auth.decorators import login_required
 
 
 from django.contrib.auth import logout
-from django.shortcuts import redirect
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth import login
-from .forms import CustomUserCreationForm,ProfileUpdateForm,CommentForm
+from .forms import CustomUserCreationForm,CommentForm
 
 
 from django.contrib.auth.decorators import login_required
 
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponseNotFound
+from django.views.decorators.http import require_POST
+from django.contrib.auth.decorators import login_required
+from .forms import UserProfileForm
 
 
-
-
+def custom_page_not_found(request, exception=None):
+    template = loader.get_template('404.html')
+    return HttpResponseNotFound(template.render({}, request))
 
 
 def cities_list(request):
@@ -32,10 +34,6 @@ def cities_list(request):
 def city_popular(request):
     city = Cities.objects.first() 
     return render(request, 'Home.html', {'city': city})
-
-#def city_detail(request, id):
-#    city = get_object_or_404(Cities, id=id)
-#    return render(request, 'CityTemp.html', {'city': city})
 
 
 
@@ -61,9 +59,7 @@ def city_detail(request, id):
         'form': form
     })
 
-#def CitiesPage(request):
-#    cities = Cities.objects.filter(id=1)  # Fetch all cities from the database
-#    return render(request, 'Cities.html', {'cities': cities})
+
 
 def CityTemp(request):
     cities = Cities.objects.first()
@@ -71,35 +67,14 @@ def CityTemp(request):
 
 
 
-#def CitiesPage(request):
-#  cities = Cities.objects.first()
-#  return render(request, 'Cities.html', {'cities': cities})
-
-
 def Account(request):
     return render(request, 'account.html')
 
-#def Main(request):
-#  template = loader.get_template('Home.html')
-#  return HttpResponse(template.render())
 
-
-
-
-#def CityTemp(request):
-#  template = loader.get_template('CityTemp.html')
-#  return HttpResponse(template.render())
 
 def Learn(request):
   template = loader.get_template('Learn.html')
   return HttpResponse(template.render())
-
-
-
-def TravelOrders(request):
-  template = loader.get_template('TravelOrders.html')
-  return HttpResponse(template.render())
-
 
 
 def Logout_View(request):
@@ -119,30 +94,32 @@ def Registration(request):
 
 
 
-@login_required
-def profile_update(request):
-    if request.method == 'POST':
-        form = ProfileUpdateForm(request.POST, request.FILES)
-        if form.is_valid():
-            profile, created = Profile.objects.get_or_create(user=request.user)
-            profile.bio = form.cleaned_data['bio']
-            profile.location = form.cleaned_data['location']
-            if 'avatar' in request.FILES:
-                profile.avatar = request.FILES['avatar']
-            profile.save()
-            
-            # Return JSON response for AJAX request
-            if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
-                return JsonResponse({'success': True})
-            
-            return redirect('profile')  # Redirect if not an AJAX request
-        
-        # Return JSON response for AJAX request with form errors
-        if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
-            return JsonResponse({'success': False, 'errors': form.errors})
 
-    # Render the form for non-AJAX requests
-    return render(request, 'profile_update.html', {'form': ProfileUpdateForm()})
+
+@login_required
+@require_POST
+def update_profile(request):
+    try:
+        profile = request.user.profile
+        
+        # Get fields from the request
+        avatar_url = request.POST.get('avatar')
+        bio = request.POST.get('bio')
+        location = request.POST.get('location')
+
+        # Update profile fields only if they are provided
+        if avatar_url:
+            profile.avatar = avatar_url
+        if bio:
+            profile.bio = bio
+        if location:
+            profile.location = location
+        
+        profile.save()
+
+        return JsonResponse({'success': True})
+    except Exception as e:
+        return JsonResponse({'success': False, 'errors': str(e)}, status=400)
 
 
 

@@ -3,7 +3,11 @@ from django.urls import path
 from . import views
 from django.contrib.auth import views as auth_views
 
+from django.conf.urls import handler404
+from .views import custom_page_not_found,update_profile
 
+
+handler404 = custom_page_not_found
 
 urlpatterns = [
     path('', city_popular , name='Main'),
@@ -12,12 +16,11 @@ urlpatterns = [
     path('city/<int:id>/', city_detail, name='CityTemp'),  # City detail
     path("CityTemp", CityTemp, name="CityTemp"),
     path("Learn", Learn, name="Learn"),
-    path("TravelOrders", TravelOrders, name="TravelOrders"),
     path("Registration", Registration, name="Registration"),
     path("Login", Login, name="Login"),
     path('Logout', Logout_View, name='Logout'),
     path('Account', Account, name='Account'),
-    path('Account', profile_update, name='update_profile'),
+    path('update-profile/', update_profile, name='update_profile'),
 
 
 ]

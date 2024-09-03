@@ -1,0 +1,14 @@
+{% extends "Main.html" %}
+
+{% block content %}
+ 
+
+<section class="welcome-section content2">
+    <div class="container ">
+        <h1>Page access is restricted to registered users only.</h1>
+        <h2 class="text-center"><a href="{% url 'Login' %}">Please Login</a> or <a href="{% url 'Registration' %}">Register</a></h2>
+   
+
+</section>
+
+{% endblock %}

@@ -2,9 +2,10 @@ from django import forms
 from .models import Comment,Profile
 
 
+
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from django import forms
+
 
 class CustomUserCreationForm(UserCreationForm):
     email = forms.EmailField(required=False, help_text='Optional.')
@@ -14,13 +15,11 @@ class CustomUserCreationForm(UserCreationForm):
         fields = ('username', 'email', 'password1', 'password2')
 
 
-class ProfileUpdateForm(forms.ModelForm):
+
+class UserProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ['bio', 'location', 'avatar']
-        widgets = {
-            'bio': forms.Textarea(attrs={'rows': 4}),
-        }
+        fields = ['avatar', 'bio', 'location']
 
 
 class CommentForm(forms.ModelForm):

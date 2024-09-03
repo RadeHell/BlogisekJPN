@@ -21,41 +21,43 @@
                     <h5 class="card-title">{{ user.username }}</h5>
                     <p>User email is: {{ user.email }}</p>
                     <p>Bio: {% if user.profile.bio %}{{ user.profile.bio }}{% else %}No bio set{% endif %}</p>
-                    <p>Location: {% if user.profile.location %}<a href="https://www.google.com/maps/search/{{ user.profile.location }}"{% else %}No location set{% endif %}</p>
+                    <p>Location: {% if user.profile.location %}{{ user.profile.location }}{% else %}No location set{% endif %}</p>
                 </div>
             </div>
         </div>
         
-        <!-- Modal HTML -->
-        <div class="modal fade" id="avatarModal" tabindex="-1" aria-labelledby="avatarModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="avatarModalLabel">Update Avatar</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form id="profile-form">
-                            <div class="mb-3">
-                                <label for="avatar-url" class="form-label">Avatar URL</label>
-                                <input type="text" class="form-control" id="avatar-url" placeholder="Enter avatar URL">
-                            </div>
-                            <div class="mb-3">
-                                <label for="description" class="form-label">Bio</label>
-                                <textarea class="form-control" id="description" rows="4" placeholder="Enter a bio"></textarea>
-                            </div>
-                            <div class="mb-3">
-                                <label for="location" class="form-label">Location</label>
-                                <input type="text" class="form-control" id="location" placeholder="Enter your location">
-                            </div>
-                            <button type="submit" class="btn btn-primary">Update Profile</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
+
+
+        <!-- Avatar Modal -->
+<div class="modal fade" id="avatarModal" tabindex="-1" aria-labelledby="avatarModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="avatarModalLabel">Update Profile</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
+        <div class="modal-body">
+          <form id="profile-form">
+            <div class="mb-3">
+              <label for="avatar" class="form-label">Avatar URL</label>
+              <input type="text" class="form-control" id="avatar" name="avatar" placeholder="Enter avatar URL">
+            </div>
+            <div class="mb-3">
+              <label for="bio" class="form-label">Bio</label>
+              <textarea class="form-control" id="bio" name="bio" placeholder="Enter your bio"></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="location" class="form-label">Location</label>
+              <input type="text" class="form-control" id="location" name="location" placeholder="Enter your location">
+            </div>
+            <button type="submit" class="btn btn-primary">Save changes</button>
+          </form>
+        </div>
+      </div>
     </div>
-    
+  </div>
+  
+  
                 
                 
 

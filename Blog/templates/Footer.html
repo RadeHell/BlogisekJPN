@@ -17,11 +17,11 @@
  
     document.addEventListener('DOMContentLoaded', function() {
         var avatarModal = new bootstrap.Modal(document.getElementById('avatarModal'));
-    
+        
         document.getElementById('change-avatar').addEventListener('click', function() {
             avatarModal.show();
         });
-    
+        
         document.getElementById('profile-form').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -42,6 +42,10 @@
                 } else {
                     alert('Error updating profile: ' + JSON.stringify(data.errors));
                 }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred while updating the profile.');
             });
         });
     });
