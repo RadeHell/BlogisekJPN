@@ -20,6 +20,8 @@ urlpatterns = [
     path("Login", Login, name="Login"),
     path('Logout', Logout_View, name='Logout'),
     path('Account', Account, name='Account'),
+    path('Culture', Culture, name='Culture'),
+    path('About', About, name='About'),
     path('update-profile/', update_profile, name='update_profile'),
 
 

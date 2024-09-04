@@ -71,10 +71,15 @@ def Account(request):
     return render(request, 'account.html')
 
 
+def About(request):
+  return render(request, 'About.html')
 
 def Learn(request):
-  template = loader.get_template('Learn.html')
-  return HttpResponse(template.render())
+  return render(request, 'Learn.html')
+
+
+def Culture(request):
+  return render(request, 'Culture.html')
 
 
 def Logout_View(request):
